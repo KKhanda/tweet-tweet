@@ -2,9 +2,9 @@ package com.scalacourse.app
 
 import org.scalatra.test.scalatest._
 
-class TweetTweetServletTests extends ScalatraFunSuite {
+class RestServletTests extends ScalatraFunSuite {
 
-  addServlet(classOf[TweetTweetServlet], "/*")
+  addServlet(classOf[RestServlet], "/*")
 
   test("GET / on TweetTweetServlet should return status 200"){
     get("/"){
