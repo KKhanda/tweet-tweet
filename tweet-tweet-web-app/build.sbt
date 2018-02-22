@@ -15,8 +15,12 @@ libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
   "ch.qos.logback" % "logback-classic" % "1.2.3" % "runtime",
   "org.eclipse.jetty" % "jetty-webapp" % "9.4.8.v20171121" % "container",
-  "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided"
+  "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
+  "org.scalatra" %% "scalatra-json" % "2.6.2",
+  "org.json4s" %% "json4s-jackson" % "3.5.2"
 )
 
-enablePlugins(SbtTwirl)
-enablePlugins(ScalatraPlugin)
+lazy val tweet_tweet = (project in file("."))
+  .enablePlugins(JettyPlugin)
+  .enablePlugins(SbtTwirl)
+  .enablePlugins(ScalatraPlugin)
