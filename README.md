@@ -4,7 +4,7 @@ API for Twitter analogue
 ## Build & Run ##
 
 ```sh
-$ cd Tweet_Tweet_Web_App
+$ cd tweet-tweet/tweet_tweet_web_app
 $ sbt
 > jetty:start
 > browse
