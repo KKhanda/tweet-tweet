@@ -1,5 +1,5 @@
-package com.scalacourse.dao
+package com.scalacourse
 
-object UserDao {
+package object UserDao {
 
 }
