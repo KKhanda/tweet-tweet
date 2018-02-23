@@ -1,3 +1,3 @@
 package com.scalacourse.models
 
-case class Twit(id: Long, text: String, author: User, submissionTime: Long)
+case class Twit(id: Long, var text: String, author: User, submissionTime: Long)
