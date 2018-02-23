@@ -1,6 +1,8 @@
 package com.scalacourse.security
 
 import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
+
+import com.scalacourse.models.User
 import org.scalatra.ScalatraBase
 import org.scalatra.auth.strategy.BasicAuthSupport
 import org.scalatra.auth.{ScentryConfig, ScentrySupport}

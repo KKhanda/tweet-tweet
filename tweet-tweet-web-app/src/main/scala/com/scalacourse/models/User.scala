@@ -1,6 +1,9 @@
 package com.scalacourse.models
 
-case class User(id: Long, email: String, nickname: String, password: String, tweets: List[Twit] = Nil) {
+import scala.collection.mutable
+
+case class User(id: Long, email: String, nickname: String, password: String,
+                tweets: mutable.MutableList[Twit] = mutable.MutableList.empty) {
 
   override def hashCode: Int = id.hashCode()
 }
