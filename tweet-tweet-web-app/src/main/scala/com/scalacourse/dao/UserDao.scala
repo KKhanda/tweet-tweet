@@ -8,8 +8,8 @@ import scala.collection.mutable
 object UserDao {
 
   var byEmailMap: mutable.TreeMap[String, User] = mutable.TreeMap[String, User]()
-  var byIdMap: mutable.TreeMap[Int, User] = mutable.TreeMap[Int, User]()
-  var idCounter: Int = 0  // Sequence for id generation
+  var byIdMap: mutable.TreeMap[Long, User] = mutable.TreeMap[Long, User]()
+  var idCounter: Long = 0  // Sequence for id generation
 
   def addUser(email: String, nickname: String, password: String): User = {
     idCounter += 1
@@ -23,7 +23,7 @@ object UserDao {
     byEmailMap.get(email)
   }
 
-  def getUser(id: Int): Option[User] = {
+  def getUser(id: Long): Option[User] = {
     byIdMap.get(id)
   }
 }
