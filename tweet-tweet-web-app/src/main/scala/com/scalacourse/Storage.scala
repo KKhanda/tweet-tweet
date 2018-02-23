@@ -1,6 +1,6 @@
 package main.scala.com.scalacourse
 
-import com.scalacourse.Controller.User
+import com.scalacourse.models.User
 
 import scala.collection.mutable
 

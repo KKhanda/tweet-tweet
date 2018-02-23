@@ -13,6 +13,8 @@ class RestServlet extends ScalatraServlet with JacksonJsonSupport with Authentic
 
   protected implicit val jsonFormats: Formats = DefaultFormats
 
+  val subscribe = List(auth.get)
+
   before() {
     contentType = formats("json")
   }
@@ -49,4 +51,19 @@ class RestServlet extends ScalatraServlet with JacksonJsonSupport with Authentic
     val token = parsedBody.extract[TokenDto]
     TokenStore.removeToken(token.token)
   }
+
+  post("/user/subscribe/:id/?") {
+    val sub_user_id = params("id")
+    subscribe :+ UserDao.getUser(sub_user_id)
+    User
+  }
+
+  get("/user/followers") {
+
+  }
+
+  get("/user/subscriptions") {
+    subscribe.tail
+  }
+
 }

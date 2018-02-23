@@ -11,6 +11,7 @@ object UserDao {
   var byEmailMap: mutable.TreeMap[String, User] = mutable.TreeMap[String, User]()
   var byIdMap: mutable.TreeMap[Int, User] = mutable.TreeMap[Int, User]()
   var idCounter: Int = 0  // Sequence for id generation
+  var subscribtions: List[User]
 
   def addUser(email: String, nickname: String, password: String): Unit = {
     idCounter += 1
@@ -37,5 +38,9 @@ object UserDao {
 
   def getUser(id: Int): Option[User] = {
     byIdMap.get(id)
+  }
+
+  def addSubscribe(user: User) = {
+    user :: subscribtions
   }
 }
