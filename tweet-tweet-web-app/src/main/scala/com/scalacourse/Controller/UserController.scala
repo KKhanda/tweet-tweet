@@ -12,9 +12,6 @@ class UserController extends ScalatraServlet with JacksonJsonSupport {
 
   override protected implicit def jsonFormats: Formats = DefaultFormats
 
-  val user = mutable.HashMap.empty[String, User]
-
-
   before() {
     contentType = formats("json")
   }
