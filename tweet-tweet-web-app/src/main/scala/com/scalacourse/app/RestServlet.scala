@@ -17,7 +17,7 @@ class RestServlet extends ScalatraServlet
   }
 
   post("/register") {
-
+    
   }
 
   post("/sign-in") {
