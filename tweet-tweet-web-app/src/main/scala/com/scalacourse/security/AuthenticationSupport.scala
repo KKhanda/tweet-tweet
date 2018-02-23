@@ -1,7 +1,6 @@
 package com.scalacourse.security
 
 import com.scalacourse.dao.UserDao
-import com.scalacourse.models.User
 import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
 
 import com.scalacourse.models.User
@@ -13,8 +12,8 @@ import org.scalatra.auth.{ScentryConfig, ScentrySupport}
 trait AuthenticationSupport extends ScentrySupport[User] with BasicAuthSupport[User] {
   self: ScalatraBase =>
 
-  protected def fromSession: PartialFunction[String, Option[User]] = { case id: String => UserDao.getUser(id) }
-  protected def toSession: PartialFunction[User, Long] = { case user: User => user.id }
+  protected def fromSession: PartialFunction[String, User] = { case id: String => UserDao.getUser(id).get }
+  protected def toSession: PartialFunction[User, String] = { case user: User => user.id.toString }
 
   var realm = "Bearer Authentication"
   protected val scentryConfig = new ScentryConfig {}.asInstanceOf[ScentryConfiguration]
