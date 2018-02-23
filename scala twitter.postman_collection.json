@@ -1,0 +1,123 @@
+{
+	"info": {
+		"name": "scala twitter",
+		"_postman_id": "3842fb1f-4fdc-a5b8-2db2-f65107f42f65",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create tweet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"text\": \"bla\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/tweet/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tweet",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "edit tweet",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/tweet/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tweet",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete tweet",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/tweet/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tweet",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "feed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/feed/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"feed",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "retweet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/retweet/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"retweet",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
