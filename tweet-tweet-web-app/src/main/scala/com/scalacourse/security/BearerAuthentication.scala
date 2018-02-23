@@ -1,7 +1,9 @@
 package com.scalacourse.security
 
-import com.scalacourse.dao.TokenStore
+import com.scalacourse.dao.{TokenStore, UserDao}
+import com.scalacourse.models.User
 import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
+import org.mindrot.jbcrypt.BCrypt
 import org.scalatra.{ScalatraBase, Unauthorized}
 import org.scalatra.auth.ScentryStrategy
 
@@ -10,7 +12,10 @@ class BearerAuthentication (protected override val app: ScalatraBase, realm: Str
   implicit def request2BearerAuthRequest(r: HttpServletRequest): BearerAuthRequest = new BearerAuthRequest(r)
 
   protected def validate(email: String, password: String): Option[User] = {
-    Some(User("email"))
+    val user: Option[User] = UserDao.byEmailMap.get(email)
+    if (user.isDefined) {
+      if (BCrypt.checkpw(password, user.get.password)) user else None
+    }
   }
 
   protected def validate(token: String): Option[User] = {

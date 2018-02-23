@@ -9,10 +9,6 @@ object TokenStore {
   val tokenMap: TreeMap[String, User] = TreeMap[String, User]()
 
   def findUser(token: String): Option[User] = {
-    if (tokenMap.contains(token)) {
-      tokenMap.get(token)
-    } else {
-      None
-    }
+    tokenMap.get(token)
   }
 }

@@ -1,26 +1,29 @@
 package com.scalacourse.dao
 
-import com.scalacourse.models.User
+import com.scalacourse.models.{User}
+import org.mindrot.jbcrypt.BCrypt
 
 import scala.collection.mutable
 
 object UserDao {
 
-  var usersMap: mutable.TreeMap[String, User] = mutable.TreeMap[String, User]()
-  var idCounter: Int = 0
+  var byEmailMap: mutable.TreeMap[String, User] = mutable.TreeMap[String, User]()
+  var byIdMap: mutable.TreeMap[Int, User] = mutable.TreeMap[Int, User]()
+  var idCounter: Int = 0  // Sequence for id generation
 
   def addUser(email: String, nickname: String, password: String): User = {
     idCounter += 1
-    val newUser = User(idCounter, email, nickname, password)
-    usersMap.put(email, newUser)
+    val newUser = User(idCounter, email, nickname, BCrypt.hashpw(password, BCrypt.gensalt(12)))
+    byEmailMap.put(email, newUser)
+    byIdMap.put(idCounter, newUser)
     newUser
   }
 
-  def findUser(email: String): Option[User] = {
-    if (usersMap.contains(email)) {
-      usersMap.get(email)
-    } else {
-      None
-    }
+  def getUser(email: String): Option[User] = {
+    byEmailMap.get(email)
+  }
+
+  def getUser(id: Int): Option[User] = {
+    byIdMap.get(id)
   }
 }

@@ -5,7 +5,6 @@ import org.scalatra.ScalatraBase
 import org.scalatra.auth.strategy.BasicAuthSupport
 import org.scalatra.auth.{ScentryConfig, ScentrySupport}
 
-case class User(id: String)
 
 trait AuthenticationSupport extends ScentrySupport[User] with BasicAuthSupport[User] {
   self: ScalatraBase =>
