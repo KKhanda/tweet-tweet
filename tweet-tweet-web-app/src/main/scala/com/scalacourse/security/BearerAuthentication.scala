@@ -15,6 +15,8 @@ class BearerAuthentication (protected override val app: ScalatraBase, realm: Str
     val user: Option[User] = UserDao.byEmailMap.get(email)
     if (user.isDefined) {
       if (BCrypt.checkpw(password, user.get.password)) user else None
+    } else {
+      None
     }
   }
 
