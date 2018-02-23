@@ -1,10 +1,14 @@
 package com.scalacourse.app
 
+import com.scalacourse.security.{AuthenticationSupport, User}
 import org.json4s.{DefaultFormats, Formats}
 import org.scalatra._
 import org.scalatra.json.JacksonJsonSupport
 
-class RestServlet extends ScalatraServlet with JacksonJsonSupport {
+class RestServlet extends ScalatraServlet
+  with JacksonJsonSupport
+  with AuthenticationSupport
+  with CorsSupport {
 
   protected implicit val jsonFormats: Formats = DefaultFormats
 
@@ -12,4 +16,16 @@ class RestServlet extends ScalatraServlet with JacksonJsonSupport {
     views.html.hello()
   }
 
+  post("/register") {
+    val user: User = auth.get
+
+  }
+
+  post("/sign-in") {
+
+  }
+
+  post("/sign-out") {
+
+  }
 }
